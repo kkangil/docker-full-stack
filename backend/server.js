@@ -23,7 +23,7 @@ db.pool.query(`CREATE TABLE lists (
 //DB lists 테이블에 있는 모든 데이터를 프론트 서베에 보내주기
 app.get('/api/hi', function (req, res) {
     //데이테베이스에서 모든 정보 가져오기
-    res.status(200).send('good')
+    res.status(200).send('good!')
 })
 
 
