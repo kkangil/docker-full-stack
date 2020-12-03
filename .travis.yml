@@ -10,7 +10,7 @@ after_success:
   - docker build -t kkangil/docker-frontend ./frontend
   - docker build -t kkangil/docker-backend ./backend
   - docker build -t kkangil/docker-nginx ./nginx
-  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --passsword-stdin
+  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
   - docker push kkangil/docker-frontend
   - docker push kkangil/docker-backend
   - docker push kkangil/docker-nginx
