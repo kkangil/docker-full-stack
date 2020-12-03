@@ -1,0 +1,16 @@
+language: generic
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t kkangil/react-test-app -f ./frontend/Dockerfile.dev ./frontend
+script:
+  - docker run -e CI=true kkangil/react-test-app npm run test
+after_success:
+  - docker build -t kkangil/docker-frontend ./frontend
+  - docker build -t kkangil/docker-backend ./backend
+  - docker build -t kkangil/docker-nginx ./nginx
+  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --passsword-stdin
+  - docker push kkangil/docker-frontend
+  - docker push kkangil/docker-backend
+  - docker push kkangil/docker-nginx

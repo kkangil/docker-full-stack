@@ -144,3 +144,12 @@ upstream *** -> *** 라는 이름은 docker-compose 의 service 에 들어갈 �
 
 컨테이너를 지우면 컨테이너 안의 저장된 데이터도 삭제된다.
 mysql 볼륨 설정을 통해 데이터가 삭제되지 않게 해줄 수 있다.
+
+### Travis CI
+
+1. 테스트 코드 실행
+2. 성공하면 운영 환경 이미지 build
+3. 빌드 된 이미지들을 Docker Hub 로 보냄 -> docker hub 에 빌드된 이미지를 보내고 aws 에서 그 이미지를 가져가므로 
+eb 안에서 다시 이미지를 빌드 하지 않아도 됌 (모든 과정중에 한번의 빌드만 이뤄짐)
+4. aws eb 에게 docker hub 에 이미지를 보냈다고 알림
+5. aws eb 에서 docker hub 에 있는 이미지를 가져간 후 배포
